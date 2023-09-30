@@ -43,7 +43,7 @@ jobs:
           path: 'swagger'
           ignore_on_exit: results
           output_formats: 'json,sarif'
-          output_path: ./results-dir/
+          output_path: results-dir
       # Display the results in json format
       - name: Show results
         run: |
