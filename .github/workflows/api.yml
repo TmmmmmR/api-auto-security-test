@@ -27,7 +27,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run a one-line script
-        run: echo Hello, world!
+        run: mkdir -p results-dir
 
       # Runs a set of commands using the runners shell
       - name: Run a multi-line script
@@ -42,8 +42,14 @@ jobs:
           # scanning the swagger folder
           path: 'swagger'
           ignore_on_exit: results
-          output_path: ./
+          output_formats: 'json,sarif'
+          output_path: ./results-dir/
       # Display the results in json format
-      - name: display kics results
+      - name: Show results
         run: |
-          cat ./results.json
+          cat results-dir/results.sarif
+          cat results-dir/results.json
+      - name: Upload SARIF file
+        uses: github/codeql-action/upload-sarif@v1
+        with:
+          sarif_file: results-dir/results.sarif
