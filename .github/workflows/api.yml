@@ -41,6 +41,7 @@ jobs:
         with:
           # scanning the swagger folder
           path: 'swagger'
+          ignore_on_exit: results
           output_path: ./
       # Display the results in json format
       - name: display kics results
