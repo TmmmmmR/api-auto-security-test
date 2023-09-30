@@ -39,10 +39,10 @@ jobs:
       - name: run kics Scan
         uses: checkmarx/kics-github-action@v1.7.0
         with:
-          # scanning two directories: ./terraform/ ./cfn-templates/ plus a single file
+          # scanning the swagger folder
           path: 'swagger'
           output_path: ./
       # Display the results in json format
       - name: display kics results
         run: |
-          cat myResults/results.json
+          cat ./results.json
